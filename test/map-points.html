@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>US Map: Continental Test</title>
+
+  <script src="../lib/raphael.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.js"></script>
+  <script src="../jquery.usmap.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('#map').usmap({
+        click: function(event,data){
+        },
+        mapPoints: {
+          'CA-07': { x: '47',  y: '244', label: 'CA-07' },
+          'CA-23': { x: '59',  y: '310', label: 'CA-23' },
+          'CA-26': { x: '86',  y: '347', label: 'CA-26' },
+          'TX-23': { x: '327', y: '462', label: 'TX-23' },
+          'IL-08': { x: '608', y: '212', label: 'IL-08' },
+          'MI-01': { x: '646', y: '111', label: 'MI-01' },
+          'NY-24': { x: '802', y: '157', label: 'NY-24' },
+          'PA-17': { x: '806', y: '211', label: 'PA-17', style: { fill: 'blue' }, hoverStyle: { fill: 'green' } }
+        },
+        mapPointStyles: { fill: '#67001c', stroke: '#cacabe' },
+        mapPointHoverStyles: { fill: '#00633c' },
+        mapPointTextStyles: { fill: 'white',  'font-family': "bebas-neue,sans-serif", 'font-weight': 400 },
+        stateStyles: {fill: 'white', stroke: '#cacabe' },
+        stateHoverStyles:  {fill: '#f6f6f1' },
+        showLabels: false
+      });
+    });
+  </script>
+
+</head>
+<body>
+
+  <div id="map" style="width: 930px; height: 630px"></div>
+
+</body>
+</html>

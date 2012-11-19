@@ -70,8 +70,15 @@
       scale: [1.1, 1.1]
     },
 
+    'mapPointHoverStyles': {
+      fill: "#33c",
+      stroke: "#000",
+      scale: [1.1, 1.1]
+    },
+
     // The time for the animation, set to false to remove the animation
     'stateHoverAnimation': 500,
+    'mapPointHoverAnimation': 500,
 
     // State specific styles. 'ST': {}
     'stateSpecificStyles': {},
@@ -95,6 +102,9 @@
 
     'mouseoutState': {},
 
+
+    // Map Points
+    'mapPointRadius': 20,
 
     // Labels
     'showLabels' : true,
@@ -184,6 +194,13 @@
       this.labelHitAreas = {};
       if(this.options.showLabels) {
         this._initCreateLabels();
+      }
+
+      this.mapPointShapes = {};
+      this.mapPointTexts = {};
+      this.mapPointHitAreas = {};
+      if(this.options.mapPoints){
+        this._initCreateMapPoints();
       }
 
       // Add the
@@ -363,15 +380,76 @@
         });
         this.labelHitAreas[state].node.dataState = state;
       }
+    },
 
+
+    /**
+     * Create the map points
+     */
+    _initCreateMapPoints: function() {
+      var R = this.paper; // shorter name for usage here
+
+      // Styling information
+      var mapPointAttr = this.options.mapPointStyles;
+      var mapPointTextAttr = this.options.mapPointTextStyles;
+      var stateAttr = {};
+
+      for(var point_id in this.options.mapPoints) {
+
+        point = this.options.mapPoints[point_id];
+
+        var radius = ( point.radius || this.options.mapPointRadius ) / this.scale;
+
+        var scaledX = point.x/this.scale;
+        var scaledY = point.y/this.scale;
+
+
+        // attributes for styling the backing
+        pointAttr = {};
+        if( point.style ) {
+          $.extend(pointAttr, mapPointAttr, point.style );
+        } else {
+          pointAttr = mapPointAttr;
+        }
+
+
+        // add the backing
+        this.mapPointShapes[point_id] = R.circle( scaledX, scaledY, radius ).attr(pointAttr);
+
+        // attributes for styling the text
+        pointAttr = {};
+        if(point.textStyle) {
+          $.extend(pointAttr, mapPointTextAttr, point.textStyle);
+        } else {
+          $.extend(pointAttr, mapPointTextAttr);
+        }
+
+        // adjust font-size
+        if(pointAttr['font-size']) {
+          pointAttr['font-size'] = (parseInt(pointAttr['font-size'])/this.scale) + 'px';
+        }
+
+        // add the text
+        this.mapPointTexts[point_id] = R.text( scaledX, scaledY, point.label).attr(pointAttr);
+
+        // Create the hit areas
+        this.mapPointHitAreas[point_id] = R.circle( scaledX, scaledY, 20 ).attr({
+          fill: "#000",
+          "stroke-width": 0,
+          "opacity" : 0.0,
+          'cursor': 'pointer'
+        });
+        this.mapPointHitAreas[point_id].node.dataState = point_id;
+
+      }
 
 
       // Bind events
-      for(var state in this.labelHitAreas) {
-        this.labelHitAreas[state].toFront();
-        $(this.labelHitAreas[state].node).bind('mouseout', this._onMouseOutProxy);
-        $(this.labelHitAreas[state].node).bind('click', this._onClickProxy);
-        $(this.labelHitAreas[state].node).bind('mouseover', this._onMouseOverProxy);
+      for(var mapPoint in this.mapPointHitAreas) {
+        this.mapPointHitAreas[mapPoint].toFront();
+        $(this.mapPointHitAreas[mapPoint].node).bind('mouseout', this._onMouseOutProxy);
+        $(this.mapPointHitAreas[mapPoint].node).bind('click', this._onClickProxy);
+        $(this.mapPointHitAreas[mapPoint].node).bind('mouseover', this._onMouseOverProxy);
       }
     },
 
@@ -391,20 +469,38 @@
      *
      */
     _getState: function(stateName) {
-      var stateShape = this.stateShapes[stateName];
-      var stateHitArea = this.stateHitAreas[stateName];
-      var labelBacking = this.labelShapes[stateName];
-      var labelText = this.labelTexts[stateName];
-      var labelHitArea = this.labelHitAreas[stateName]
 
-      return {
-        shape: stateShape,
-        hitArea: stateHitArea,
-        name: stateName,
-        labelBacking: labelBacking,
-        labelText: labelText,
-        labelHitArea: labelHitArea
-      };
+      if ( this.mapPointShapes[stateName] ){
+
+        var mapPointShape = this.mapPointShapes[stateName];
+        var mapPointShapeHitArea = this.mapPointHitAreas[stateName];
+        var mapPointShapeText = this.mapPointTexts[stateName];
+
+        return {
+          mapPointShape: mapPointShape,
+          mapPointHitArea: mapPointShapeHitArea,
+          name: stateName,
+          mapPointLabelText: mapPointShapeText
+        };
+
+      } else {
+
+        var stateShape = this.stateShapes[stateName];
+        var stateHitArea = this.stateHitAreas[stateName];
+        var labelBacking = this.labelShapes[stateName];
+        var labelText = this.labelTexts[stateName];
+        var labelHitArea = this.labelHitAreas[stateName]
+
+        return {
+          shape: stateShape,
+          hitArea: stateHitArea,
+          name: stateName,
+          labelBacking: labelBacking,
+          labelText: labelText,
+          labelHitArea: labelHitArea
+        };
+
+      }
     },
 
 
@@ -416,7 +512,7 @@
       var stateData = this._getStateFromEvent(event);
 
       // Stop if no state was found
-      if(!stateData.hitArea) {
+      if(!stateData.hitArea && !stateData.mapPointHitArea) {
         return;
       }
 
@@ -430,15 +526,18 @@
      */
     _defaultMouseOutAction: function(stateData) {
       // hover effect
-      // ... state shape
-      var attrs = {};
-      if(this.options.stateSpecificStyles[stateData.name]) {
-        $.extend(attrs, this.options.stateStyles, this.options.stateSpecificStyles[stateData.name]);
-      } else {
-        attrs = this.options.stateStyles;
-      }
 
-      stateData.shape.animate(attrs, this.options.stateHoverAnimation);
+      // ... state shape
+      if (stateData.shape){
+        var attrs = {};
+        if(this.options.stateSpecificStyles[stateData.name]) {
+          $.extend(attrs, this.options.stateStyles, this.options.stateSpecificStyles[stateData.name]);
+        } else {
+          attrs = this.options.stateStyles;
+        }
+
+        stateData.shape.animate(attrs, this.options.stateHoverAnimation);
+      }
 
 
       // ... for the label backing
@@ -453,6 +552,19 @@
 
         stateData.labelBacking.animate(attrs, this.options.stateHoverAnimation);
       }
+
+      // ... mapPoint shape
+      if (stateData.mapPointShape){
+        var attrs = {};
+        if(this.options.mapPoints[stateData.name].style) {
+          $.extend(attrs, this.options.mapPointStyles, this.options.mapPoints[stateData.name].style);
+        } else {
+          attrs = this.options.mapPointStyles;
+        }
+
+        stateData.mapPointShape.animate(attrs, this.options.mapPointHoverAnimation);
+      }
+
     },
 
 
@@ -461,9 +573,10 @@
      */
     _onClick: function(event) {
       var stateData = this._getStateFromEvent(event);
+      if (this.options.click_debug) console.log( (event.layerX * this.scale) + ', ' + (event.layerY * this.scale) );
 
       // Stop if no state was found
-      if(!stateData.hitArea) {
+      if(!stateData.hitArea && !stateData.mapPointHitArea) {
         return;
       }
 
@@ -476,10 +589,11 @@
      * The mouseover handler
      */
     _onMouseOver: function(event) {
+
       var stateData = this._getStateFromEvent(event);
 
       // Stop if no state was found
-      if(!stateData.hitArea) {
+      if(!stateData.hitArea && !stateData.mapPointHitArea) {
         return;
       }
 
@@ -492,19 +606,23 @@
      * The default on hover action for a state
      */
     _defaultMouseOverAction: function(stateData) {
+
       // hover effect
-      this.bringShapeToFront(stateData.shape);
+      if (stateData.shape && !this.options.mapPoints) this.bringShapeToFront(stateData.shape);
+      if (stateData.mapPointShape) this.bringShapeToFront(stateData.mapPointShape);
       this.paper.safari();
 
       // ... for the state
-      var attrs = {};
-      if(this.options.stateSpecificHoverStyles[stateData.name]) {
-        $.extend(attrs, this.options.stateHoverStyles, this.options.stateSpecificHoverStyles[stateData.name]);
-      } else {
-        attrs = this.options.stateHoverStyles;
-      }
+      if (stateData.shape){
+        var attrs = {};
+        if(this.options.stateSpecificHoverStyles[stateData.name]) {
+          $.extend(attrs, this.options.stateHoverStyles, this.options.stateSpecificHoverStyles[stateData.name]);
+        } else {
+          attrs = this.options.stateHoverStyles;
+        }
 
-      stateData.shape.animate(attrs, this.options.stateHoverAnimation);
+        stateData.shape.animate(attrs, this.options.stateHoverAnimation);
+      }
 
       // ... for the label backing
       if(stateData.labelBacking) {
@@ -518,6 +636,20 @@
 
         stateData.labelBacking.animate(attrs, this.options.stateHoverAnimation);
       }
+
+      // ... for the map Point
+      if(stateData.mapPointShape) {
+        var attrs = {};
+
+        if(this.options.mapPoints[stateData.name].hoverStyle) {
+          $.extend(attrs, this.options.labelBackingHoverStyles, this.options.mapPoints[stateData.name].hoverStyle);
+        } else {
+          attrs = this.options.mapPointHoverStyles;
+        }
+
+        stateData.mapPointShape.animate(attrs, this.options.mapPointHoverAnimation);
+      }
+
     },
 
 
