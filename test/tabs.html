@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="ie ie6" lang="en" xml:lang="en" xmlns:fb="http://ogp.me/ns/fb#" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
+<!--[if IE 7]><html class="ie ie7" lang="en" xml:lang="en" xmlns:fb="http://ogp.me/ns/fb#" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
+<!--[if IE 8]><html class="ie ie8" lang="en" xml:lang="en" xmlns:fb="http://ogp.me/ns/fb#" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
+<!--[if gte IE 9]><html class="ie ie9" lang="en" xml:lang="en" xmlns:fb="http://ogp.me/ns/fb#" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
+<!--[if !IE]><html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><![endif]-->
+<head>
+
+   <meta charset='utf-8' />
+   <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible' />
+   <meta content='en-us' http-equiv='Content-Language' />
+
+
+
+
+
+   <title>Our Election Impact - League of Conservation Voters</title>
+
+
+   <meta name="title" content="Our Election Impact - League of Conservation Voters" />
+   <meta name="description" content="Description needed" />
+   <meta name="abstract" content="Description needed" />
+   <meta name="keywords" content="key, words, here" />
+   <meta name="copyright" content="(c) Copyright 2012 Our Election Impact - League of Conservation Voters" />
+   <meta name="robots" content="noodp, noydir" />
+   <meta name="revisit-after" content="1 day" />
+   <link rel="image_src" href="http://elections.lcv.bytrilogy.com/img/facebook.png" />
+
+   <!-- Facebook OG tags -->
+   <meta property="og:title" content="Our Election Impact - League of Conservation Voters" />
+
+   <meta property="og:type" content="nonprofit" />
+   <meta property="og:url" content="http://elections.lcv.bytrilogy.com/" />
+   <meta property="og:image" content="http://elections.lcv.bytrilogy.com/img/facebook.png" />
+   <meta property="og:site_name" content="Our Election Impact - League of Conservation Voters" />
+   <meta property="fb:admins" content="16477459734" />
+   <meta property="og:description" content="Description needed}" />
+
+   <!-- Google+ Tags -->
+   <meta itemprop="name" content="Our Election Impact - League of Conservation Voters">
+   <meta itemprop="description" content="Description needed">
+
+   <meta itemprop="image" content="http://elections.lcv.bytrilogy.com/img/facebook.png">
+
+   <link rel="stylesheet" href="http://elections.lcv.bytrilogy.com//design/css/reset.css" type="text/css" media="screen, projection"/>
+   <link rel="stylesheet" href="http://elections.lcv.bytrilogy.com//design/css/styles.css" type="text/css" media="screen, projection"/>
+
+   <script type="text/javascript" src="http://elections.lcv.bytrilogy.com//design/scripts/jquery.ti-utilities-1.6.2-6.js"></script>
+   <script type="text/javascript" src="http://elections.lcv.bytrilogy.com//design/scripts/jquery-ui-tabs.min.js"></script>
+   <script type="text/javascript" src="http://elections.lcv.bytrilogy.com//design/scripts/raphael.js"></script>
+   <script type="text/javascript" src="http://elections.lcv.bytrilogy.com//design/scripts/jquery.usmap.js"></script>
+   <script type="text/javascript" src="http://elections.lcv.bytrilogy.com//design/scripts/site.js"></script>
+
+   <script type="text/javascript" src="//use.typekit.net/mnw3itl.js"></script>
+
+   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+</head>
+
+<body id="home">
+
+   <header>
+<div class="wrap">
+
+   <a href="/" title="League of Conservation Voters - Our Election Impact" id="logo">
+      <span class="hide">League of Conservation Voters</span>
+      Our Election Impact
+   </a>
+
+
+
+
+</div>
+</header>
+
+
+
+   <section id="top">
+      <div class="wrap">
+         <p>The League of Conservation Voters is poised to have our biggest election cycle ever, and play a decisive role in shaping the political landscape in Washington. In 2011, LCV outlined a clear strategy for the cycle of focusing our resources in fewer places to have a disproportionate impact on key races. </p>
+      </div>
+   </section>
+
+   <section id="content">
+   <div class="wrap">
+
+
+      <script type="text/javascript">
+
+        init_maps = { dirtydozen: true };
+        init_methods = {};
+        panel_hash = {
+          '#president': 0,
+          '#senate': 1,
+          '#house': 2,
+          '#states': 3,
+          '#dirtydozen': 4,
+        };
+        load_tab_map = function(event,ui){
+          var key = $(ui.panel).attr('id');
+          if ( !init_maps[key] ) {
+            init_methods[key]();
+            init_maps[key] = true;
+          }
+        };
+
+         $(function() {
+
+           $("#home-tabs").tabs({
+             fx: { opacity: 'toggle' },
+             speed: 'fast',
+             selected: -1
+           });
+
+           $("#home-tabs").bind('tabsshow',load_tab_map);
+           $("#home-tabs").tabs('select', location.hash ? panel_hash[location.hash] : 1);
+
+         });
+      </script>
+
+      <div id="home-tabs" class="cf">
+
+         <ul>
+            <li><a href="#president" class="president" title="President">President</a></li>
+            <li><a href="#senate" class="senate" title="Senate">Senate</a></li>
+            <li><a href="#house" class="house" title="House">House</a></li>
+            <li><a href="#states" class="states" title="States">States</a></li>
+
+            <li><a href="#dirtydozen" class="dirtydozen" title="Dirty Dozen">Dirty Dozen</a></li>
+         </ul>
+
+      </div><!--home-tabs-->
+
+      <div id="president" class="cf">
+        <script type="text/javascript">
+          init_methods.president = function(){
+            var presidential_states = {
+              'CO': 'colorado',
+              'FL': 'lcv-for-obama',
+              'NV': 'nevada',
+              'OH': 'lcv-for-obama',
+              'VA': 'lcv-for-obama',
+              'WI': 'lcv-for-obama'
+            };
+
+            $('#president-map').usmap({
+              continental: true,
+              stateStyles: {fill: 'white', stroke: '#cacabe' },
+              stateHoverStyles:  {fill: 'white' },
+              stateSpecificStyles: {
+                'CO': {fill: '#67001c'},
+                'FL': {fill: '#67001c'},
+                'NV': {fill: '#67001c'},
+                'OH': {fill: '#67001c'},
+                'VA': {fill: '#67001c'},
+                'WI': {fill: '#67001c'}
+              },
+              stateSpecificHoverStyles: {
+                'MD': {fill: '#00633c'},
+                'CO': {fill: '#00633c'},
+                'FL': {fill: '#00633c'},
+                'NV': {fill: '#00633c'},
+                'OH': {fill: '#00633c'},
+                'VA': {fill: '#00633c'},
+                'WI': {fill: '#00633c'}
+              },
+              showLabels: false,
+              click: function(event,data){
+                if ( presidential_states[ data.name ] ) document.location = '/president/' + presidential_states[ data.name ];
+              }
+            });
+          };
+        </script>
+        <div id="president-map" style="width: 980px; height: 637px"></div>
+        <a href="/president/national" title="National" class="nat-link">National</a>
+      </div>
+
+
+      <div id="senate" class="cf">
+        <script type="text/javascript">
+          init_methods.senate = function(){
+            var senate_states = {
+              'AZ': 'arizona',
+              'CT': 'connecticut',
+              'ME': 'maine',
+              'MA': 'massachusetts',
+              'MT': 'montana',
+              'NM': 'new-mexico',
+              'OH': 'ohio',
+              'VA': 'virginia',
+              'WI': 'wisconsin'
+            };
+
+            $('#senate-map').usmap({
+              continental: true,
+              stateStyles: {fill: 'white', stroke: '#cacabe' },
+              stateHoverStyles:  { fill: 'white' },
+              stateSpecificStyles: {
+                'AZ': {fill: '#67001c'},
+                'CT': {fill: '#67001c'},
+                'ME': {fill: '#67001c'},
+                'MA': {fill: '#67001c'},
+                'MT': {fill: '#67001c'},
+                'NM': {fill: '#67001c'},
+                'OH': {fill: '#67001c'},
+                'VA': {fill: '#67001c'},
+                'WI': {fill: '#67001c'}
+              },
+              stateSpecificHoverStyles: {
+                'AZ': {fill: '#00633c'},
+                'CT': {fill: '#00633c'},
+                'ME': {fill: '#00633c'},
+                'MA': {fill: '#00633c'},
+                'MT': {fill: '#00633c'},
+                'NM': {fill: '#00633c'},
+                'OH': {fill: '#00633c'},
+                'VA': {fill: '#00633c'},
+                'WI': {fill: '#00633c'}
+              },
+              showLabels: false,
+              click: function(event,data){
+                if ( senate_states[ data.name ] ) document.location = '/senate/' + senate_states[ data.name ];
+              }
+            });
+          };
+        </script>
+        <div id="senate-map" class="cf" style="width: 980px; height: 637px"></div>
+      </div>
+
+      <div id="house" class="cf">
+        <script type="text/javascript">
+          init_methods.house = function() {
+            $('#house-map').usmap({
+              continental: true,
+              mapPoints: {
+                'CA-07': { x: '47',  y: '244', label: 'CA-07' },
+                'CA-23': { x: '59',  y: '310', label: 'CA-23' },
+                'CA-26': { x: '86',  y: '347', label: 'CA-26' },
+                'TX-23': { x: '327', y: '462', label: 'TX-23' },
+                'IL-08': { x: '608', y: '212', label: 'IL-08' },
+                'MI-01': { x: '646', y: '111', label: 'MI-01' },
+                'NY-24': { x: '802', y: '157', label: 'NY-24' },
+                'PA-17': { x: '806', y: '211', label: 'PA-17' }
+              },
+              mapPointStyles: { fill: '#67001c', stroke: '#cacabe' },
+              mapPointHoverStyles: { fill: '#00633c' },
+              mapPointTextStyles: { fill: 'white',  'font-family': "bebas-neue,sans-serif", 'font-weight': 400, 'font-size': 16 },
+              stateStyles: {fill: 'white', stroke: '#cacabe' },
+              stateHoverStyles:  {fill: 'white', cursor: 'none'},
+              showLabels: true,
+              click: function(event,data){
+                if ( data.isMapPoint ) document.location = '/house/' + data.name.toLowerCase()
+              }
+            });
+          };
+        </script>
+        <div id="house-map" class="cf" style="width: 980px; height: 637px"></div>
+      </div>
+
+      <div id="states" class="cf">
+
+        <script type="text/javascript">
+          init_methods.states = function(){
+            var state_states = {
+              'CO': 'dirty-dozen',
+              'ID': 'dirty-dozen',
+              'ME': 'dirty-dozen',
+              'MI': 'dirty-dozen',
+              'MN': 'dirty-dozen',
+              'MT': 'dirty-dozen',
+              'NM': 'dirty-dozen',
+              'NY': 'dirty-dozen',
+              'NC': 'dirty-dozen',
+              'OR': 'dirty-dozen',
+              'PA': 'dirty-dozen',
+              'WA': 'washington',
+              'WI': 'dirty-dozen'
+            };
+
+            $('#states-map').usmap({
+              stateStyles: {fill: 'white', stroke: '#cacabe' },
+              stateHoverStyles:  {fill: 'white' },
+              stateSpecificStyles: {
+                'CO': {fill: '#67001c'},
+                'ID': {fill: '#67001c'},
+                'ME': {fill: '#67001c'},
+                'MI': {fill: '#67001c'},
+                'MN': {fill: '#67001c'},
+                'MT': {fill: '#67001c'},
+                'NM': {fill: '#67001c'},
+                'NY': {fill: '#67001c'},
+                'NC': {fill: '#67001c'},
+                'OR': {fill: '#67001c'},
+                'PA': {fill: '#67001c'},
+                'WA': {fill: '#67001c'},
+                'WI': {fill: '#67001c'}
+              },
+              stateSpecificHoverStyles: {
+                'CO': {fill: '#00633c'},
+                'ID': {fill: '#00633c'},
+                'ME': {fill: '#00633c'},
+                'MI': {fill: '#00633c'},
+                'MN': {fill: '#00633c'},
+                'MT': {fill: '#00633c'},
+                'NM': {fill: '#00633c'},
+                'NY': {fill: '#00633c'},
+                'NC': {fill: '#00633c'},
+                'OR': {fill: '#00633c'},
+                'PA': {fill: '#00633c'},
+                'WA': {fill: '#00633c'},
+                'WI': {fill: '#00633c'}
+              },
+              showLabels: false,
+              click: function(event,data){
+                if ( state_states[ data.name ] ) document.location = '/states/' + state_states[ data.name ];
+              }
+            });
+          };
+        </script>
+        <div id="states-map" class="cf" style="width: 980px; height: 637px"></div>
+      </div>
+
+
+      <div id="dirtydozen" class="cf">
+
+         <p>For decades, LCV&rsquo;s signature electoral program has been the Dirty Dozen, which targets the 12 most anti-environmental candidates in competitive races. This cycle we invested more resources in the program than ever before&mdash;spending more than $10 million in Dirty Dozen races alone&mdash;and placed a greater emphasis on the issue of climate change by adding the Flat Earth Five to the list. In the end, we had our most successful program ever by defeating 11 out of 12.</p>
+
+         <div class="cf">
+
+
+            <div class="candidate">
+            <a href="/president/national" title="Mitt Romney">
+               <strong>Defeated</strong>
+               <img src="http://elections.lcv.bytrilogy.com/president/candidate-2-headshot/romney.png" alt="Mitt Romney">
+               <h3>Mitt Romney</h3>
+               <h4>President</h4>
+            </a>
+            </div>
+
+
+            <div class="candidate">
+            <a href="/senate/virginia" title="George Allen">
+               <strong>Defeated</strong>
+               <img src="http://elections.lcv.bytrilogy.com/senate/candidate-2/george-allen.jpg" alt="George Allen">
+               <h3>George Allen</h3>
+               <h4>VA-Senate</h4>
+            </a>
+            </div>
+
+
+            <div class="candidate">
+            <a href="/senate/montana" title="Dennis Rehberg">
+               <strong>Defeated</strong>
+               <img src="http://elections.lcv.bytrilogy.com/senate/candidate-2-headshot/mt-rehberg.png" alt="Dennis Rehberg">
+               <h3>Dennis Rehberg</h3>
+               <h4>MT-Senate</h4>
+            </a>
+            </div>
+
+
+            <div class="candidate">
+            <a href="/senate/ohio" title="Josh Mandel">
+               <strong>Defeated</strong>
+               <img src="http://elections.lcv.bytrilogy.com/senate/candidate-2-headshot/oh-mandel.png" alt="Josh Mandel">
+               <h3>Josh Mandel</h3>
+               <h4>OH-Senate</h4>
+            </a>
+            </div>
+
+
+            <div class="candidate">
+            <a href="/senate/connecticut" title="Linda McMahon">
+               <strong>Defeated</strong>
+               <img src="http://elections.lcv.bytrilogy.com/senate/candidate-2-headshot/ct-mcmahon.png" alt="Linda McMahon">
+               <h3>Linda McMahon</h3>
+               <h4>CT-Senate</h4>
+            </a>
+            </div>
+
+
+            <div class="candidate">
+            <a href="/senate/new-mexico" title="Heather Wilson">
+               <strong>Defeated</strong>
+               <img src="http://elections.lcv.bytrilogy.com/senate/candidate-2-headshot/nm-wilson.png" alt="Heather Wilson">
+               <h3>Heather Wilson</h3>
+               <h4>NM-Senate</h4>
+            </a>
+            </div>
+
+
+            <div class="candidate">
+            <a href="/house/mi-01" title="Dan Benishek">
+
+               <img src="http://elections.lcv.bytrilogy.com/house/candidate-2-headshot/mi01-benishek.png" alt="Dan Benishek">
+               <h3>Dan Benishek</h3>
+               <h4>MI-1</h4>
+            </a>
+            </div>
+
+            <div class="candidate">
+
+            <a href="/house/ny-24" title="Ann Marie Buerkle">
+               <strong>Defeated</strong>
+               <img src="http://elections.lcv.bytrilogy.com/house/candidate-2-headshot/ny24-buerkle.png" alt="Ann Marie Buerkle">
+               <h3>Ann Marie Buerkle</h3>
+               <h4>NY-24</h4>
+            </a>
+            </div>
+
+            <div class="candidate">
+
+            <a href="/house/tx-23" title="Francisco Canseco">
+               <strong>Defeated</strong>
+               <img src="http://elections.lcv.bytrilogy.com/house/candidate-2-headshot/tx23-canseco.png" alt="Francisco Canseco">
+               <h3>Francisco Canseco</h3>
+               <h4>TX-23</h4>
+            </a>
+            </div>
+
+            <div class="candidate">
+
+
+               <strong>Defeated</strong>
+               <img src="http://elections.lcv.bytrilogy.com/dirty-dozen/headshot/tim-holden.png" alt="Tim Holden">
+               <h3>Tim Holden</h3>
+               <h4>PA-17</h4>
+
+            </div>
+
+            <div class="candidate">
+            <a href="/house/ca-07" title="Dan Lungren">
+               <strong>Defeated</strong>
+               <img src="http://elections.lcv.bytrilogy.com/house/candidate-2-headshot/ca07-lungren.png" alt="Dan Lungren">
+
+               <h3>Dan Lungren</h3>
+               <h4>CA-07</h4>
+            </a>
+            </div>
+
+            <div class="candidate">
+            <a href="/house/il-08" title="Joe Walsh">
+               <strong>Defeated</strong>
+               <img src="http://elections.lcv.bytrilogy.com/house/candidate-2-headshot/il08-walsh.png" alt="Joe Walsh">
+
+               <h3>Joe Walsh</h3>
+               <h4>IL-08</h4>
+            </a>
+            </div>
+
+         </div>
+
+      </div>
+
+   </div>
+   </section>
+
+
+
+   <footer>
+
+<div class="wrap">
+   <p>The spending totals cited for LCV's programs include spending by LCV, LCV Action Fund and LCV Victory Fund.</p>
+   <p>Site by <a href="http://trilogyinteractive.com" title="Trilogy" target="_blank">Trilogy</a></p>
+</div>
+</footer>
+   <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36329140-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>
