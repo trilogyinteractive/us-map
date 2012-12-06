@@ -480,7 +480,8 @@
           mapPointShape: mapPointShape,
           mapPointHitArea: mapPointShapeHitArea,
           name: stateName,
-          mapPointLabelText: mapPointShapeText
+          mapPointLabelText: mapPointShapeText,
+          isMapPoint: true
         };
 
       } else {
