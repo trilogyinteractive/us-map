@@ -498,7 +498,8 @@
           name: stateName,
           labelBacking: labelBacking,
           labelText: labelText,
-          labelHitArea: labelHitArea
+          labelHitArea: labelHitArea,
+          isMapPoint: false
         };
 
       }
@@ -643,7 +644,7 @@
         var attrs = {};
 
         if(this.options.mapPoints[stateData.name].hoverStyle) {
-          $.extend(attrs, this.options.labelBackingHoverStyles, this.options.mapPoints[stateData.name].hoverStyle);
+          $.extend(attrs, this.options.mapPointHoverStyles, this.options.mapPoints[stateData.name].hoverStyle);
         } else {
           attrs = this.options.mapPointHoverStyles;
         }
