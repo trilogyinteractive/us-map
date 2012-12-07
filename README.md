@@ -207,7 +207,6 @@ $('#map').on('usmapmouseover', function(event, data) {
   console.log(data.name);
 });
 
-
 $('#map').on('usmapmouseout', function(event, data) {
   // Output the abbreviation of the state name to the console
   console.log(data.name);
