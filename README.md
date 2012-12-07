@@ -137,25 +137,25 @@ The event handler is passed two arguments: the jQuery event object and a data ob
 
 ### Map Point Data Object
 
-#### name (string)
-
-The identifier string used to reference the map point it the configuration hash.
-
-#### mapPointShape  (Element)
-
-The circle element (SVG or VML) for the map point.
-
-#### mapPointHitArea  (Element)
-
-The circle element (SVG or VML) for the transparent hit area.
-
-#### mapPointLabelText (Element)
-
-The vector text element (SVG or VML) for the map point's label text.
-
-#### isMapPoint (boolean)
-
-Will always be **true** for a map point.
+> #### name (string)
+>
+> The identifier string used to reference the map point it the configuration hash.
+>
+> #### mapPointShape  (Element)
+>
+> The circle element (SVG or VML) for the map point.
+>
+> #### mapPointHitArea  (Element)
+>
+> The circle element (SVG or VML) for the transparent hit area.
+>
+> #### mapPointLabelText (Element)
+>
+> The vector text element (SVG or VML) for the map point's label text.
+>
+> #### isMapPoint (boolean)
+>
+> Will always be **true** for a map point.
 
 ### Event Types
 
@@ -244,19 +244,17 @@ Manually trigger off an event and the resulting event handlers.
 $('#map').usmap('trigger', state, eventType, event)
 ```
 
-#### Parameters
-
-##### state (string)
-
-The two letter abbreviation of the state.
-
-##### eventType (string)
-
-The type of event to trigger
-
-##### event (Event) [optional]
-
-The original triggering event.
+> #### state (string)
+>
+> The two letter abbreviation of the state.
+>
+> #### eventType (string)
+>
+> The type of event to trigger
+>
+> #### event (Event) [optional]
+>
+> The original triggering event.
 
 
 ## Styling
