@@ -107,33 +107,33 @@ The event handler is passed two arguments: the jQuery event object and a data ob
 
 ### State Data object
 
-#### name (string)
+> #### name (string)
 
-The two letter abbreviation of the state.
+> The two letter abbreviation of the state.
 
-#### shape (Element)
+> #### shape (Element)
 
-The shape element (SVG or VML) for the state.
+> The shape element (SVG or VML) for the state.
 
-#### hitArea (Element)
+> #### hitArea (Element)
 
-The shape element (SVG or VML) for the transparent hit area.
+> The shape element (SVG or VML) for the transparent hit area.
 
-#### labelBacking (Element)
+> #### labelBacking (Element)
 
-The shape element (SVG or VML) for the backing of the label if there is one for the state.
+> The shape element (SVG or VML) for the backing of the label if there is one for the state.
 
-####  labelText (Element)
+> ####  labelText (Element)
 
-The vector text element (SVG or VML) for the label text if there is one for the state.
+> The vector text element (SVG or VML) for the label text if there is one for the state.
 
-#### labelHitArea (Element)
+> #### labelHitArea (Element)
 
-The shape element (SVG or VML) for the transparent hit area for the label if there is one for the state.
+> The shape element (SVG or VML) for the transparent hit area for the label if there is one for the state.
 
-#### isMapPoint (boolean)
+> #### isMapPoint (boolean)
 
-Will always be **false** for a state.
+> Will always be **false** for a state.
 
 ### Map Point Data Object
 
