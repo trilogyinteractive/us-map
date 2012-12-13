@@ -452,6 +452,14 @@ An object to override the default styles for an individual label text. The objec
 
 An object to override the default hover styles for an individual label text. The object keys are the state abbreviation with the value being the style object.
 
+## Rendering Multiple Maps
+
+The plugin allows for rendering multiple maps on the same page, however care must be used when doing so. The most common situation when you would render multiple maps is to have a small version that you can "click to enlarge". When doing so, you will run into the rendering hidden maps issue, so be sure to read the section on how to handle that.
+
+## Rendering Hidden Maps
+
+Modern browsers have no problem rendering a map into a hidden div for use in a modal window or perhaps a tabbed element. Unfortunately, less modern browsers (like earlier versions of IE) will fail when trying to render into a hidden div. To handle this, you should wait to invoke .us_map() until that hidden div appears in the browser. For example, if you're using [jquery-ui.tabs](http://jqueryui.com/tabs/), you would want to attach a listener on the [activate](http://api.jqueryui.com/tabs/#event-activate) event that triggers the .us_map() call, taking care to only invoke the method once the first time the tab is activated. A simple initialization boolean can help you keep track of that.
+
 ## Credits
 
 Forked from the excellent [NewSignature/us-map](/NewSignature/us-map).
