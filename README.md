@@ -408,6 +408,10 @@ $('#map').usmap({
 
 If you're using the small eastern seaboard state labels, you can configure most aspects of their with these configuration options.
 
+### labelStates
+
+The states to display with labels. This can be any state, regardless of its geographic location.
+
 ### labelWidth
 
 The width of the labels.

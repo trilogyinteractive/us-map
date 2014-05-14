@@ -148,7 +148,9 @@
 
     'stateSpecificLabelTextStyles': {},
 
-    'stateSpecificLabelTextHoverStyles': {}
+    'stateSpecificLabelTextHoverStyles': {},
+
+    'labelStates': ['VT', 'NH', 'MA', 'RI', 'CT', 'NJ', 'DE', 'MD', 'DC']
   };
 
 
@@ -203,7 +205,6 @@
         this._initCreateMapPoints();
       }
 
-      // Add the
     },
 
     /**
@@ -313,7 +314,7 @@
      */
     _initCreateLabels: function() {
       var R = this.paper; // shorter name for usage here
-      var neStates = ['VT', 'NH', 'MA', 'RI', 'CT', 'NJ', 'DE', 'MD', 'DC'];
+      var neStates = this.options.labelStates;
 
       // calculate the values for placing items
       var neBoxX = 860;
